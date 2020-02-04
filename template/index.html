@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>ChyEmbeddables</title>
+
+		<style>
+			html, body, #content {
+				margin: 0;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content"></div>
+
+		<% htmlWebpackPlugin.files.js.forEach(function (src) { %>
+			<script src="<%= src %>"></script>
+		<% }) %>
+
+		<script>
+			ChyEmbeddables.graphic(document.getElementById('content'), {
+			    url: 'http://localhost:8081/chystat'
+			});
+		</script>
+	</body>
+</html>
