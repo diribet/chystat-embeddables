@@ -1,9 +1,19 @@
+const fs = require('fs');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const packageName = require("./package.json").name;
+
+const sandboxHtmlFilePattern = /sandbox.*\.html$/;
+const sandboxHtmlFiles = fs.readdirSync('./sandbox').filter(filename => filename.match(sandboxHtmlFilePattern));
+
+const htmlWebpackPlugins = sandboxHtmlFiles.map(filename => new HtmlWebPackPlugin({
+    template: `./sandbox/${filename}`,
+    filename: `./${filename}`,
+    inject: false
+}));
 
 module.exports = (env, argv) => {
     const isDevelopment = argv.mode === 'development';
@@ -34,10 +44,7 @@ module.exports = (env, argv) => {
         },
         plugins: [
             new CleanWebpackPlugin(),
-            new HtmlWebPackPlugin({
-                template: 'template/index.html',
-                inject: false
-            })
+            ...htmlWebpackPlugins
         ]
     };
 

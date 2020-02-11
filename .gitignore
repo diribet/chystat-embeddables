@@ -3,7 +3,7 @@
 **/*.iml
 
 /node_modules/
-/template/index.html
+/sandbox/sandbox[-_]*.html
 /dist
 
 npm-debug.log
