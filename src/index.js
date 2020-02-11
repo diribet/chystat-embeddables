@@ -4,7 +4,9 @@ import {createContent} from "./utils";
 const EMBEDDABLE_PATH = '/embeddable';
 
 function graphic(element, properties) {
-    properties.url += EMBEDDABLE_PATH + '?type=graphic';
+    properties.url += EMBEDDABLE_PATH;
+    properties.type = 'graphic';
+
     createContent(element, properties);
 }
 
