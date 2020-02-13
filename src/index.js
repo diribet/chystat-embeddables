@@ -1,4 +1,3 @@
-import "core-js/stable";
 import {createContent} from "./utils";
 
 const EMBEDDABLE_PATH = '/embeddable';

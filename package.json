@@ -9,9 +9,7 @@
     "compile-dev-analyze": "webpack --mode development --watch --progress --config webpack.config.js --analyzer"
   },
   "author": "Jan Krakora",
-  "dependencies": {
-    "core-js": "3.3.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.1.0",
@@ -20,8 +18,8 @@
     "html-webpack-plugin": "^3.2.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
     "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.2"
   }
 }
