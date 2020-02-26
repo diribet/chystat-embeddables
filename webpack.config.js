@@ -4,8 +4,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const packageName = require("./package.json").name;
-
 const sandboxHtmlFilePattern = /sandbox.*\.html$/;
 const sandboxHtmlFiles = fs.readdirSync('./sandbox').filter(filename => filename.match(sandboxHtmlFilePattern));
 
@@ -21,10 +19,9 @@ module.exports = (env, argv) => {
     const config = {
         entry: './src/index.js',
         output: {
-            filename: `${packageName}.js`,
+            filename: 'chystat-embeddables.js',
             library: 'ChyEmbeddables',
-            libraryTarget: 'umd',
-            umdNamedDefine: true
+            libraryTarget: 'umd'
         },
         module: {
             rules: [

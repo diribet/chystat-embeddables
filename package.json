@@ -2,6 +2,7 @@
     "name": "chystat-embeddables",
     "version": "1.0.0",
     "license": "UNLICENSED",
+    "main": "dist/chystat-embeddables.js",
     "scripts": {
         "clean": "rm -fr ./dist",
         "compile": "webpack --mode production --config webpack.config.js",
