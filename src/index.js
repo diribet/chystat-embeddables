@@ -48,6 +48,6 @@ function createContent(element, properties) {
     element.appendChild(iframe);
 }
 
-export default {
+export {
     graphic
 };
