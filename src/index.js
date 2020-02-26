@@ -2,10 +2,24 @@ const EMBEDDABLE_PATH = '/embeddable';
 
 let embeddableIdSequence = 0;
 
-function graphic(elementOrId, properties) {
-    properties.url += EMBEDDABLE_PATH;
-    properties.type = 'graphic';
+function graphic(elementOrId, options) {
+    if (options.graphicId == null) {
+        throw new Error("The graphicId option is required.");
+    }
 
+    if (options.query == null && options.simpleQuery == null) {
+        throw new Error("One of the query or simpleQuery options is required.");
+    }
+
+    const properties = {
+        type: 'graphic',
+        url: options.url + EMBEDDABLE_PATH,
+        graphicId: options.graphicId,
+        locale: options.locale,
+        query: options.query,
+        simpleQuery: options.simpleQuery,
+        graphicParameters: options.graphicParameters
+    };
     const element = resolveElement(elementOrId);
     createContent(element, properties);
 }
