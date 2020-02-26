@@ -1,8 +1,11 @@
 {
-    "name": "chystat-embeddables",
+    "name": "@diribet/chystat-embeddables",
     "version": "1.0.0",
     "license": "MIT",
     "main": "dist/chystat-embeddables.js",
+    "files": [
+        "dist/chystat-embeddables.js"
+    ],
     "scripts": {
         "clean": "rm -fr ./dist",
         "compile": "webpack --mode production --config webpack.config.js",
