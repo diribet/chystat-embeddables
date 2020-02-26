@@ -2,11 +2,19 @@ const EMBEDDABLE_PATH = '/embeddable';
 
 let embeddableIdSequence = 0;
 
-function graphic(element, properties) {
+function graphic(elementOrId, properties) {
     properties.url += EMBEDDABLE_PATH;
     properties.type = 'graphic';
 
+    const element = resolveElement(elementOrId);
     createContent(element, properties);
+}
+
+function resolveElement(elementOrId) {
+    if (typeof elementOrId === 'string') {
+        return document.getElementById(elementOrId);
+    }
+    return elementOrId;
 }
 
 function createContent(element, properties) {
