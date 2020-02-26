@@ -1,6 +1,6 @@
 # chy.stat Embeddables
 
-> Embed chy.stat graphics to your website
+> Embed [chy.stat](https://www.chystat.com) graphics to your website
 
 ## Table of Contents
 
@@ -13,8 +13,6 @@
 
 ## Install
 
-[npm][]:
-
 ```sh
 npm install @diribet/chystat-embeddables
 ```
@@ -22,13 +20,15 @@ npm install @diribet/chystat-embeddables
 
 ## Usage
 
+```javascript
+ChyEmbeddables.graphic([ element | elementId ], options)
+```
+
+**HTML**
 ```html
 <div id="embed-graphic" />
 ```
 
-```javascript
-ChyEmbeddables.graphic([ element | elementId ], options)
-```
 
 ### Node
 
@@ -77,8 +77,8 @@ ChyEmbeddables.graphic("embed-graphic", {
 | url                   | URL of chy.stat|
 | graphicId             | Id of the embeddable graphic that should be rendered |
 | locale                | ISO 639-1 language code |
-| simpleQuery           | Object containing K-key: value pairs. These represents conditions used to find data for graphic. Multiple conditions will be combined using logical AND.<br/>You can use either `simpleQuery` or `query`.|
-| query                 | Query object used to find data for graphic. See [documentation](https://apidocs.chystat.com/current#kkey-query) for more information.<br/>You can use either `simpleQuery` or `query`.|
+| simpleQuery           | Object containing a K-key: value pairs. These conditions will be used to find data for the graphic. Multiple conditions will be combined using the logical AND operator.<br/>You can use either `simpleQuery` or `query`.|
+| query                 | Query object used to find data for the graphic. See [documentation](https://apidocs.chystat.com/current#kkey-query) for more information.<br/>You can use either `simpleQuery` or `query`.|
 | graphicParameters     | Graphic parameters that will override default graphic configuration.|
 
 
