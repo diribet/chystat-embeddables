@@ -53,7 +53,7 @@ ChyEmbeddables.graphic("embed-graphic", {
 ### Browser
 
 ```html
-<script src="https://unpkg.com/@diribet/chystat-embeddables/chystat-embeddables.js"></script>
+<script src="https://unpkg.com/@diribet/chystat-embeddables/dist/chystat-embeddables.js"></script>
 
 <script type="text/javascript">
   (function() {
