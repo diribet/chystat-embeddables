@@ -1,7 +1,7 @@
 {
     "name": "chystat-embeddables",
     "version": "1.0.0",
-    "license": "UNLICENSED",
+    "license": "MIT",
     "main": "dist/chystat-embeddables.js",
     "scripts": {
         "clean": "rm -fr ./dist",
@@ -10,6 +10,10 @@
         "compile-dev-analyze": "webpack --mode development --watch --progress --config webpack.config.js --analyzer"
     },
     "author": "Jan Krakora",
+    "contributors": [
+        "Jan Krakora",
+        "Vlastimil Dolejs"
+    ],
     "dependencies": {},
     "devDependencies": {
         "@babel/core": "^7.8.4",
@@ -24,5 +28,13 @@
     },
     "engines": {
         "yarn": "NO LONGER USED - Please use npm"
+    },
+    "homepage": "https://github.com/diribet/chystat-embeddables",
+    "bugs": {
+        "url": "https://github.com/diribet/chystat-embeddables/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/diribet/chystat-embeddables.git"
     }
 }
