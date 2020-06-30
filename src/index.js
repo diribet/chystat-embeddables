@@ -4,11 +4,11 @@ let embeddableIdSequence = 0;
 
 function graphic(elementOrId, options) {
     if (options.graphicId == null) {
-        throw new Error("The graphicId option is required.");
+        throw new Error("The graphicId option is required");
     }
 
     if (options.query == null && options.simpleQuery == null) {
-        throw new Error("One of the query or simpleQuery options is required.");
+        throw new Error("One of the query or simpleQuery options is required");
     }
 
     const properties = {
@@ -50,7 +50,7 @@ function createContent(element, properties) {
     iframe.style.height = '100%';
 
     window.addEventListener('message', function(event) {
-        if (event.data.type === "embeddable-loaded" && event.data.embeddableId == embeddableId) {
+        if (event.data.type === "embeddable-loaded" && event.data.embeddableId === embeddableId) {
             const message = {
                 type: "embeddable-settings",
                 settings: properties
