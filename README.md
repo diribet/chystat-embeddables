@@ -20,15 +20,17 @@ npm install @diribet/chystat-embeddables
 
 ## Usage
 
+### JavaScript
+
 ```javascript
 ChyEmbeddables.graphic([ element | elementId ], options)
 ```
 
-**HTML**
+### HTML
+
 ```html
 <div id="embed-graphic" />
 ```
-
 
 ### Node
 
@@ -39,9 +41,12 @@ ChyEmbeddables.graphic("embed-graphic", {
     url: "https://chystat.instance.url",
     graphicId: "bcc44e3a-a6fc-4db1-adfc-f2ad8bb0af55",
     locale: "en",
-    simpleQuery: {
+    simpleDataQuery: {
         K1001: "shaft",
         K2001: "diameter"
+    },
+    simpleHistoricalDataQuery: {
+        K0063: 5
     },
     graphicParameters: {
         "dataHistory.type": "totalValues",
@@ -61,10 +66,13 @@ ChyEmbeddables.graphic("embed-graphic", {
         url: "https://chystat.instance.url",
         graphicId: "bcc44e3a-a6fc-4db1-adfc-f2ad8bb0af55",
         locale: "en",
-        simpleQuery: {
+        simpleDataQuery: {
             K1001: "shaft",
             K2001: "diameter"
-        }
+        },
+        simpleHistoricalDataQuery: {
+            K0063: 5
+        },
     });
   })();
 </script>
@@ -72,15 +80,28 @@ ChyEmbeddables.graphic("embed-graphic", {
 
 ### Options
 
-| Option                | Description   |
-| ----------------------|-------------- |
-| url                   | URL of chy.stat|
-| graphicId             | Id of the embeddable graphic that should be rendered |
-| locale                | ISO 639-1 language code |
-| simpleQuery           | Object containing a K-key: value pairs. These conditions will be used to find data for the graphic. Multiple conditions will be combined using the logical AND operator.<br/>You can use either `simpleQuery` or `query`.|
-| query                 | Query object used to find data for the graphic. See [documentation](https://apidocs.chystat.com/current#kkey-query) for more information.<br/>You can use either `simpleQuery` or `query`.|
-| graphicParameters     | Graphic parameters that will override default graphic configuration.|
+| Option                    | Description   | Required |
+| ------------------------- | ------------- | -------- |
+| url                       | URL of chy.stat | true |
+| graphicId                 | Id of the embeddable graphic that should be rendered | true |
+| locale                    | ISO 639-1 language code | false |
+| simpleDataQuery           | Query object containing a K-key: value pairs. Multiple conditions will be combined using the logical AND operator. | false* |
+| dataQuery                 | Query object with complex K-key rules. See [documentation](https://apidocs.chystat.com/current#kkey-query) for more information. | false* |
+| simpleHistoricalDataQuery | Query object containing a K-key: value pairs. Multiple conditions will be combined using the logical AND operator. | true* |
+| historicalDataQuery       | Query object with complex K-key rules. See [documentation](https://apidocs.chystat.com/current#kkey-query) for more information. | true* |
+| graphicParameters         | Graphic parameters that will override default graphic configuration. | false |
 
+__*__ You can use either `simpleQuery` or `query` version
+
+#### Query
+
+Looking for data is performed in two possible ways:
+
+* You provide both `dataQuery` or `simpleDataQuery` and `historicalDataQuery` or `simpleHistoricalDataQuery`.<br>
+  Then data query will be used to find data and after that historical query will be used to find historical data (if necessary).
+  
+* You privide only `historicalDataQuery` or `simpleHistoricalDataQuery`<br>
+  Then the historical query will be used to find data together with historical data.
 
 ## License
 

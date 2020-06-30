@@ -3,21 +3,29 @@ const EMBEDDABLE_PATH = '/embeddable';
 let embeddableIdSequence = 0;
 
 function graphic(elementOrId, options) {
-    if (options.graphicId == null) {
+    const {
+        graphicId,
+        historicalDataQuery,
+        simpleHistoricalDataQuery,
+    } = options;
+
+    if (graphicId == null) {
         throw new Error("The graphicId option is required");
     }
 
-    if (options.query == null && options.simpleQuery == null) {
-        throw new Error("One of the query or simpleQuery options is required");
+    if (historicalDataQuery == null && simpleHistoricalDataQuery == null) {
+        throw new Error("One of the historicalDataQuery or simpleHistoricalDataQuery options is required");
     }
 
     const properties = {
         type: 'graphic',
         url: options.url + EMBEDDABLE_PATH,
-        graphicId: options.graphicId,
+        graphicId,
         locale: options.locale,
-        query: options.query,
-        simpleQuery: options.simpleQuery,
+        dataQuery: options.dataQuery,
+        simpleDataQuery: options.simpleDataQuery,
+        historicalDataQuery,
+        simpleHistoricalDataQuery,
         graphicParameters: options.graphicParameters
     };
     const element = resolveElement(elementOrId);
