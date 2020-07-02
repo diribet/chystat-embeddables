@@ -5,16 +5,16 @@ let embeddableIdSequence = 0;
 function graphic(elementOrId, options) {
     const {
         graphicId,
-        historicalDataQuery,
-        simpleHistoricalDataQuery,
+        dataQuery,
+        simpleDataQuery,
     } = options;
 
     if (graphicId == null) {
         throw new Error("The graphicId option is required");
     }
 
-    if (historicalDataQuery == null && simpleHistoricalDataQuery == null) {
-        throw new Error("One of the historicalDataQuery or simpleHistoricalDataQuery options is required");
+    if (dataQuery == null && simpleDataQuery == null) {
+        throw new Error("One of the dataQuery or simpleDataQuery options is required");
     }
 
     const properties = {
@@ -22,10 +22,10 @@ function graphic(elementOrId, options) {
         url: options.url + EMBEDDABLE_PATH,
         graphicId,
         locale: options.locale,
-        dataQuery: options.dataQuery,
-        simpleDataQuery: options.simpleDataQuery,
-        historicalDataQuery,
-        simpleHistoricalDataQuery,
+        dataQuery,
+        simpleDataQuery,
+        historicalDataQuery: options.historicalDataQuery,
+        simpleHistoricalDataQuery: options.simpleHistoricalDataQuery,
         graphicParameters: options.graphicParameters
     };
     const element = resolveElement(elementOrId);

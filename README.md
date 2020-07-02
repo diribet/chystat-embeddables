@@ -91,17 +91,17 @@ ChyEmbeddables.graphic("embed-graphic", {
 | historicalDataQuery       | Query object with complex K-key rules. See [documentation](https://apidocs.chystat.com/current#kkey-query) for more information. | true* |
 | graphicParameters         | Graphic parameters that will override default graphic configuration. | false |
 
-__*__ You can use either `simpleQuery` or `query` version
+__*__ You can use either `simple[Data|HistoricalData]Query` or `[data|historicalData]Query` version.
 
 #### Query
 
 Looking for data is performed in two possible ways:
 
-* You provide both `dataQuery` or `simpleDataQuery` and `historicalDataQuery` or `simpleHistoricalDataQuery`.<br>
+* You provide both `[simple]dataQuery` and `[simple]historicalDataQuery`.<br>
   Then data query will be used to find data and after that historical query will be used to find historical data (if necessary).
   
-* You privide only `historicalDataQuery` or `simpleHistoricalDataQuery`<br>
-  Then the historical query will be used to find data together with historical data.
+* You privide only `[simple]dataQuery`<br>
+  Then the data query will be used to find data without any additional history lookup.
 
 ## License
 
