@@ -1,5 +1,5 @@
 const fs = require('fs');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -64,11 +64,7 @@ module.exports = (env, argv) => {
     } else {
         config.optimization = {
             minimize: true,
-            minimizer: [
-                new UglifyJsPlugin({
-                    sourceMap: false
-                })
-            ]
+            minimizer: [new TerserPlugin()]
         };
     }
 
