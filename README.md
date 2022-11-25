@@ -1,5 +1,7 @@
 # chy.stat Embeddables
 
+[![npm (scoped)](https://img.shields.io/npm/v/@diribet/chystat-embeddables)](https://www.npmjs.com/package/@diribet/chystat-embeddables)
+
 > Embed [chy.stat](https://www.chystat.com) graphics to your website
 
 ## Table of Contents
@@ -99,7 +101,7 @@ Looking for data is performed in two possible ways:
 
 * You provide both `[simple]dataQuery` and `[simple]historicalDataQuery`.<br>
   Then data query will be used to find data and after that historical query will be used to find historical data (if necessary).
-  
+
 * You privide only `[simple]dataQuery`<br>
   Then the data query will be used to find data without any additional history lookup.
 
