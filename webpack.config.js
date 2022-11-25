@@ -1,8 +1,5 @@
 const fs = require('fs');
-const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const sandboxHtmlFilePattern = /sandbox.*\.html$/;
 const sandboxHtmlFiles = fs.readdirSync('./sandbox').filter(filename => filename.match(sandboxHtmlFilePattern));
@@ -21,7 +18,8 @@ module.exports = (env, argv) => {
         output: {
             filename: 'chystat-embeddables.js',
             library: 'ChyEmbeddables',
-            libraryTarget: 'umd'
+            libraryTarget: 'umd',
+            clean: true
         },
         module: {
             rules: [
@@ -31,7 +29,6 @@ module.exports = (env, argv) => {
                     use: {
                         loader: "babel-loader",
                         options: {
-                            cacheDirectory: true,
                             configFile: "./babel.config.js",
                             envName: argv.mode
                         }
@@ -40,7 +37,6 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
-            new CleanWebpackPlugin(),
             ...htmlWebpackPlugins
         ]
     };
@@ -51,20 +47,9 @@ module.exports = (env, argv) => {
             ignored: /node_modules/
         };
 
-        if (argv.analyzer) {
-            console.log("Bundle analyzer is enabled...");
-            config.plugins = [
-                ...config.plugins,
-                new BundleAnalyzerPlugin({
-                    analyzerMode: 'static',
-                    openAnalyzer: false
-                })
-            ];
-        }
     } else {
         config.optimization = {
-            minimize: true,
-            minimizer: [new TerserPlugin()]
+            minimize: true
         };
     }
 
