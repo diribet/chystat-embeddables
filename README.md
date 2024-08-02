@@ -105,6 +105,12 @@ Looking for data is performed in two possible ways:
 * You privide only `[simple]dataQuery`<br>
   Then the data query will be used to find data without any additional history lookup.
 
+#### Graphic parameters
+
+__*__ Overridable graphic parameters can be fetched by GET request under endpoint `/api/v1/embed/graphics`
+
+__*__ Possible custom time period settings for graphic parameters can be fetched by GET request under endpoint `/api/v1/embed/graphics/parameters/timePeriodSettings`
+
 ## License
 
 [MIT](LICENSE) © Diribet
